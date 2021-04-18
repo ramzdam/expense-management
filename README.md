@@ -77,7 +77,16 @@ We also need to run the db:seed to make sure the Role Table gets populated by de
 ```
 php artisan db:seed
 ```
+# Login Credential
+```
+Administrator: 
+User: admin@admin.com
+Password: admin
 
+User: 
+User: user@user.com
+Password: user
+```
 ## Database
 To connect to your database below are the credential
 
