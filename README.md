@@ -1,6 +1,15 @@
 # Expense Management Exam
 This is just a simple implementation of an Expense Management System. Although it's better to use Vue but due to lack of time I opt to use the conventional Blade syntax and JQuery
 
+## Note
+There are more improvements needed for this application. But for simplicity I just opt to go with the simplest approach. One of the improvements would be 1.
+
+1. Using REDIS CACHE/MEMCACHE.
+2. Implementing Policy instead of GATE for cleaner approach
+3. Using stateless site to make use of Token
+4. Using SPA (But due to lack of time and I'm not familiar with VueJS I opt to dev it in simpler way)
+5. Adding Unit Testing 
+
 ## System Requirements
 Please make sure this is installed in your local machine
 
