@@ -69,13 +69,8 @@
                         </div>
                         @if(isset($roles) && $roles)
                         <div class="form-group row">
-                            <label for="type" class="col-md-4 col-form-label text-md-right">{{ __('Account Type') }}</label>                            
-                            <select class="form-control col-md-5" name="type" id="type">
-                            @foreach($roles as $role)
-                                <option value="{{ $role->name }}" @if($role->id == $user->userRole->role_id) selected @endif>{{ $role->name }}</option>
-                            @endforeach
-                            </select>
-                        
+                            <label for="type" class="col-md-4 col-form-label text-md-right">{{ __('Account Type') }}</label>
+                            <div class="col-md-6"><span>{{ Auth::user()->userRole->role->name }}</span></div>                        
                         </div>
                         @endif
                         <div class="form-group row">

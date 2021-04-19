@@ -112,7 +112,12 @@ class User extends Controller
         $response = $this->updateRecord($this->model, $request, $id);
         
         if ($response['status']) {
-            $redirect = route("user.home");
+
+            if(Auth::user()->isAdmin()) {
+                $redirect = route("user.home");
+            } else {
+                $redirect = route('user.useredit.form', ['id'=> Auth::user()->p_id]);
+            }
         }
         return response()->json(['success' => $response['status'], 'message' => $response['message'], 'data' => $response['data'], 'redirect' => $redirect]);
     }
@@ -129,7 +134,11 @@ class User extends Controller
         $response = $this->updateRecord($this->model, $request, $id);
         
         if ($response['status']) {
-            $redirect = route('user.useredit.form', ['id'=> Auth::user()->p_id]);
+            if(Auth::user()->isAdmin()) {
+                $redirect = route("user.home");
+            } else {
+                $redirect = route('user.useredit.form', ['id'=> Auth::user()->p_id]);
+            }
         }
         return response()->json(['success' => $response['status'], 'message' => $response['message'], 'data' => $response['data'], 'redirect' => $redirect]);
     }
