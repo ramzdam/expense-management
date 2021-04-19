@@ -13,7 +13,7 @@
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/chart', 'HomeController@chart')->name('chart');
+Route::middleware(['auth'])->get('/chart', 'HomeController@chart')->name('chart');
 
 Route::namespace('User')
     ->prefix('user')
