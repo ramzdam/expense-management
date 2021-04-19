@@ -7,6 +7,7 @@ use App\Repositories\UserRepository;
 use App\Repositories\RoleRepository;
 use Illuminate\Http\Request;
 use App\Traits\UserTrait;
+use Auth;
 
 class User extends Controller
 {
@@ -86,6 +87,20 @@ class User extends Controller
     }
 
     /**
+     * Show the form for editing the specified user.
+     *
+     * @param  string  $id - User p_id
+     * @return view
+     */
+    public function userEdit($id)
+    {
+        $roles = $this->roleModel->get();
+        $response = $this->getUser($this->model, $id);
+        
+        return view('user.user-edit-form', ['roles' => $roles, 'user' => $response["data"], 'user_pid' => $id]);
+    }
+
+    /**
      * Update the specified user in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -102,6 +117,22 @@ class User extends Controller
         return response()->json(['success' => $response['status'], 'message' => $response['message'], 'data' => $response['data'], 'redirect' => $redirect]);
     }
 
+    /**
+     * Update the specified user in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string  $id - User p_id
+     * @return Json
+     */
+    public function userUpdate(Request $request, $id)
+    {
+        $response = $this->updateRecord($this->model, $request, $id);
+        
+        if ($response['status']) {
+            $redirect = route('user.useredit.form', ['id'=> Auth::user()->p_id]);
+        }
+        return response()->json(['success' => $response['status'], 'message' => $response['message'], 'data' => $response['data'], 'redirect' => $redirect]);
+    }
     /**
      * Remove the specified user from storage.
      *

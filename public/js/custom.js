@@ -190,6 +190,31 @@ $(document).ready(function() {
         return false;
     });
 
+    $("#user-update-user").on('click', function(e) {
+        e.preventDefault();
+        var data = $(this).parents('form').serialize();
+        var url = $(this).parents('form').attr('action');
+
+        $.ajax({
+            method: "PUT",
+            url: url,
+            data: data,
+            dataType: 'json',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(res) {
+                
+                if (res.success) {
+                    window.location.href = res.redirect;
+                    
+                }
+            }
+        });
+        
+        return false;
+    });
+
     $(".delete-user").on('click', function(e) {
         e.preventDefault();
         var data = $(this).parents('form').serialize();

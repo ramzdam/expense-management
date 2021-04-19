@@ -52,10 +52,12 @@ Route::namespace('User')
         Route::get('/', 'User@index')->name('home');
         Route::get('/create', 'User@create')->name('create.form');
         Route::get('/edit/{id}', 'User@edit')->name('edit.form');
+        Route::get('/user-edit/{id}', 'User@userEdit')->name('useredit.form');
         Route::get('/{id}', 'User@show')->name('view');
 
         Route::post('/', 'User@store')->name('save');
         Route::put('/{id}', 'User@update')->name('update');
+        Route::put('/update/{id}', 'User@userUpdate')->name('userupdate');
         Route::delete('/{id}', 'User@destroy')->name('delete');
     });
 
