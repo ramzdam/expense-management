@@ -9,6 +9,7 @@
                 <div class="card-header">{{ __('Expense Categories') }} <a href="{{ route('expense.category.create.form') }}" class="float-right btn btn-success">{{ __('Create Category') }}</a></div>
 
                 <div class="card-body">
+                    @include('partials.flash-message')
                     @if($categories)
                         <table class="table table-stripe table-hover">
                             <thead>

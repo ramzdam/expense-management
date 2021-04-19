@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
         @include('partials.menu')
         <div class="col-md-8">
-            <div class="card">
+            <div class="card">                
                 <div class="card-header">{{ __('Users') }} 
                     @can('can-create-user')
                     <a href="{!! route('user.create.form') !!}" class="float-right btn btn-success">{{ __('Create New User') }}</a>
@@ -12,6 +12,7 @@
                 </div>
 
                 <div class="card-body">
+                    @include('partials.flash-message')
                     @if(isset($users) && $users)
                         <table class="table table-stripe table-hover">
                             <thead>

@@ -14,6 +14,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    @include('partials.flash-message')
                     @cannot('view-dashboard')
                     You are logged in!
                     @endcannot

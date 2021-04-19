@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Update Expense') }}</div>
 
                 <div class="card-body">
-
+                    @include('partials.flash-message')
                     <form method="POST" action="{!! route('user.expense.update', ['user_id' => $expense->user->p_id, 'id' => $expense->p_id]) !!}">
                         @csrf
 

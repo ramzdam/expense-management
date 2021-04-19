@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Create new Expense Category') }}</div>
 
                 <div class="card-body">
-
+                    @include('partials.flash-message')
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 

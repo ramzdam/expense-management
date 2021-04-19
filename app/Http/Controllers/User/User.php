@@ -7,6 +7,7 @@ use App\Repositories\UserRepository;
 use App\Repositories\RoleRepository;
 use Illuminate\Http\Request;
 use App\Traits\UserTrait;
+use Illuminate\Support\Facades\Session;
 use Auth;
 
 class User extends Controller
@@ -55,6 +56,7 @@ class User extends Controller
         $response = $this->save($this->model, $request);
 
         if ($response['status']) {
+            Session::flash('alert-success', $response['message']);
             $redirect = route("user.home");
         }
         return response()->json(['success' => $response['status'], 'message' => $response['message'], 'data' => $response['data'], 'redirect' => $redirect]);
@@ -112,13 +114,14 @@ class User extends Controller
         $response = $this->updateRecord($this->model, $request, $id);
         
         if ($response['status']) {
-
+            Session::flash('alert-success', $response['message']);
             if(Auth::user()->isAdmin()) {
                 $redirect = route("user.home");
             } else {
                 $redirect = route('user.useredit.form', ['id'=> Auth::user()->p_id]);
             }
-        }
+        }        
+
         return response()->json(['success' => $response['status'], 'message' => $response['message'], 'data' => $response['data'], 'redirect' => $redirect]);
     }
 
@@ -134,6 +137,7 @@ class User extends Controller
         $response = $this->updateRecord($this->model, $request, $id);
         
         if ($response['status']) {
+            Session::flash('alert-success', $response['message']);
             if(Auth::user()->isAdmin()) {
                 $redirect = route("user.home");
             } else {
@@ -153,6 +157,7 @@ class User extends Controller
         $response = $this->deleteRecord($this->model, $id);
         
         if ($response['status']) {
+            Session::flash('alert-success', $response['message']);
             $redirect = route("user.home");
         }
         return response()->json(['success' => $response['status'], 'message' => $response['message'], 'data' => $response['data'], 'redirect' => $redirect]);

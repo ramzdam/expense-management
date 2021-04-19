@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Update user') }}</div>
 
                 <div class="card-body">
-
+                    @include('partials.flash-message')
                     <form method="POST" action="{!! route('user.userupdate', ['id' => $user_pid]) !!}">
                         @csrf
 

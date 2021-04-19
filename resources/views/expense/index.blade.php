@@ -8,6 +8,7 @@
                 <div class="card-header">{{ __('Expenses') }} <a href="{!! route('user.expense.create.form', ['user_id' => Auth::user()->p_id ]) !!}" class="float-right btn btn-success">{{ __('Create Expense') }}</a></div>
 
                 <div class="card-body">
+                    @include('partials.flash-message')
                     @if($expenses)
                         <table class="table table-stripe table-hover">
                             <thead>

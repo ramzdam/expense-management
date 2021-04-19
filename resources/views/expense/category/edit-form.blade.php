@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Edit Expense Category') }}</div>
 
                 <div class="card-body">
-
+                    @include('partials.flash-message')
                     <form method="POST" action="{!! route('expense.category.update', ['id' => $category['p_id']]) !!}">
                         @csrf
 

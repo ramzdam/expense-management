@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Create new Expense') }}</div>
 
                 <div class="card-body">
-
+                    @include('partials.flash-message')
                     <form method="POST" action="{!! route('user.expense.save', ['user_id' => Auth::user()->p_id]) !!}">
                         @csrf
 

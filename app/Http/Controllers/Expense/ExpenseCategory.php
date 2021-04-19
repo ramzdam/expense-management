@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\ExpenseCategoryRepository;
 use App\Traits\ExpenseCategoryTrait;
+use Illuminate\Support\Facades\Session;
 
 class ExpenseCategory extends Controller
 {
@@ -48,6 +49,7 @@ class ExpenseCategory extends Controller
         $response = $this->save($this->model, $request);
 
         if ($response['status']) {
+            Session::flash('alert-success', $response['message']);
             $redirect = route("expense.category.home");
         }
         return response()->json(['success' => $response['status'], 'message' => $response['message'], 'data' => $response['data'], 'redirect' => $redirect]);
@@ -90,6 +92,7 @@ class ExpenseCategory extends Controller
         $response = $this->updateRecord($this->model, $request, $id);
 
         if ($response['status']) {
+            Session::flash('alert-success', $response['message']);
             $redirect = route("expense.category.home");
         }
         return response()->json(['success' => $response['status'], 'message' => $response['message'], 'data' => $response['data'], 'redirect' => $redirect]);
@@ -106,6 +109,7 @@ class ExpenseCategory extends Controller
         $response = $this->deleteRecord($this->model, $id);
 
         if ($response['status']) {
+            Session::flash('alert-success', $response['message']);
             $redirect = route("expense.category.home");
         }
         return response()->json(['success' => $response['status'], 'message' => $response['message'], 'data' => $response['data'], 'redirect' => $redirect]);

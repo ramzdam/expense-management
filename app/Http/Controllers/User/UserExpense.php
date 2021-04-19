@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Repositories\UserExpenseRepository;
 use App\Repositories\ExpenseCategoryRepository;
 use App\Traits\UserExpenseTrait;
+use Illuminate\Support\Facades\Session;
 
 
 class UserExpense extends Controller
@@ -55,6 +56,7 @@ class UserExpense extends Controller
         $response = $this->save($this->model, $request, $user_id);
 
         if ($response['status']) {
+            Session::flash('alert-success', $response['message']);
             $redirect = route("expense.home");
         }
         return response()->json(['success' => $response['status'], 'message' => $response['message'], 'data' => $response['data'], 'redirect' => $redirect]);
@@ -99,6 +101,7 @@ class UserExpense extends Controller
         $response = $this->updateRecord($this->model, $request, $user_id, $id);
 
         if ($response['status']) {
+            Session::flash('alert-success', $response['message']);
             $redirect = route("expense.home");
         }
 
@@ -117,6 +120,7 @@ class UserExpense extends Controller
         $response = $this->deleteRecord($this->model, $user_id, $id);
 
         if ($response['status']) {
+            Session::flash('alert-success', $response['message']);
             $redirect = route("expense.home");
         }
         return response()->json(['success' => $response['status'], 'message' => $response['message'], 'data' => $response['data'], 'redirect' => $redirect]);
