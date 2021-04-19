@@ -21,7 +21,13 @@ class ExpenseCategoryRepository implements RecordInterface
     public function __construct(ExpenseCategory $model)
     {
     }
-
+    
+    /**
+     * Remove the specified expense category from storage.
+     *
+     * @param  string  $pid - Expense Category p_id
+     * @return Array
+     */
     public function delete($pid)
     {
         try {
@@ -62,6 +68,13 @@ class ExpenseCategoryRepository implements RecordInterface
         }
     }
 
+    /**
+     * Update the specified expense category from storage.
+     *
+     * @param  array   $record - Filtered form params submitted
+     * @param  string  $pid - Expense Category p_id
+     * @return Array
+     */
     public function update($record, $pid) 
     {
         try {
@@ -99,8 +112,8 @@ class ExpenseCategoryRepository implements RecordInterface
     /**
      * Save the records based from the detail received from API
      *
-     * @param Array $records
-     * @return Boolean
+     * @param  Array $record - Filtered form params submitted
+     * @return Array
      */
     public function save($record)
     {
@@ -149,6 +162,12 @@ class ExpenseCategoryRepository implements RecordInterface
         }
     }
 
+    /**
+     * Check if the Expense Category exist using the Expense Category name
+     *
+     * @param  string  $name - Expense Category name
+     * @return Boolean
+     */
     public function isNameExist($name)
     {
         if (!$name) {
@@ -165,33 +184,9 @@ class ExpenseCategoryRepository implements RecordInterface
     }
 
     /**
-     * Get record by code
+     * Get expense category record by code
      *
-     * @param String $code
-     * @return Collection
-     */
-    public function getDetailByCode($code) 
-    {
-        // try {
-        //     if (!$code) {
-        //         return null;
-        //     }
-
-        //     $playerModel = $this->getModel();
-        //     $player = $playerModel::find($code);
-           
-        //     return $player;
-
-        // } catch(\Exception $e) {
-        //     Log::error("An error has occured: " . $e->getMessage());
-        //     return null;
-        // }
-    }
-
-    /**
-     * Get player record by code
-     *
-     * @param String $code
+     * @param String $code - Expense Category p_id
      * @return Collection
      */
     public function get($code = "")

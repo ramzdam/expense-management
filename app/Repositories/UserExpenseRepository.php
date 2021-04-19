@@ -22,9 +22,15 @@ class UserExpenseRepository implements RecordInterface
 
     public function __construct(Expense $model)
     {
-        // $this->setModel($model);
     }
 
+    /**
+     * Delete record from specified storage.
+     *
+     * @param  string  $user_id - Auth user p_id
+     * @param  string  $pid - User Expense p_id
+     * @return Array
+     */
     public function deleteRecord($user_id, $pid) 
     {
         try {
@@ -67,9 +73,16 @@ class UserExpenseRepository implements RecordInterface
 
     public function delete($pid)
     {
-        
     }
 
+    /**
+     * Update the specified user expense from storage.
+     *
+     * @param  array   $record - Filtered form params submitted
+     * @param  string  $user_id - Auth user p_id
+     * @param  string  $pid - User Expense p_id
+     * @return Array
+     */
     public function updateRecord($record, $user_id, $pid)
     {
         try {
@@ -116,10 +129,10 @@ class UserExpenseRepository implements RecordInterface
        
     }
     /**
-     * Save the records based from the detail received from API
+     * Save the records to the stroage
      *
-     * @param Array $records
-     * @return Boolean
+     * @param Array $records - Filtered form params submitted
+     * @return Array
      */
     public function save($record)
     {
@@ -176,9 +189,8 @@ class UserExpenseRepository implements RecordInterface
     }
 
     /**
-     * Get player record by code
+     * Get all User Expense record
      *
-     * @param String $code
      * @return Collection
      */
     public function getAll()
@@ -186,6 +198,12 @@ class UserExpenseRepository implements RecordInterface
         return Expense::all();
     }
 
+    /**
+     * Get expense based from p_id
+     *
+     * @param  string  $expense_pid - User Expense p_id
+     * @return Collection
+     */
     public function getExpense($expense_pid)
     {
         if (!$expense_pid) {
@@ -197,7 +215,7 @@ class UserExpenseRepository implements RecordInterface
         return $result;
     }
     /**
-     * Get player record by code
+     * Get User Expense record by code/pid
      *
      * @param String $code
      * @return Collection
@@ -225,6 +243,11 @@ class UserExpenseRepository implements RecordInterface
         return $this->toDetailRecord($total_expense, $expense, $expense_category);
     }
 
+    /**
+     * Get the User Expense total regardless of user.
+     *
+     * @return Array
+     */
     public function getChart()
     {
 

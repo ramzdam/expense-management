@@ -3,13 +3,19 @@
 namespace App\Traits\Transformers;
 
 /**
- * Trait PlayerTransformer
+ * Trait UserTransformer
  *
  * This Trait will be responsible for transforming collection record
  * into a Prettier format to be presented as response
  */
 trait UserTransformer
 {
+    /**
+     * Transform the Collection into a readable Array
+     *
+     * @param  Collection  $record - Retrieve User collection record
+     * @return Array
+     */
     public function toDetailRecord($record)
     {
         $output = [];

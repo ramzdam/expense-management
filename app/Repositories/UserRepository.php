@@ -24,9 +24,14 @@ class UserRepository implements RecordInterface
 
     public function __construct(User $model)
     {
-        // $this->setModel($model);
     }
 
+    /**
+     * Delete the user record
+     *
+     * @param  string  $pid - User p_id
+     * @return Array
+     */
     public function delete($pid)
     {
         try {
@@ -67,6 +72,13 @@ class UserRepository implements RecordInterface
         }
     }
 
+    /**
+     * Update User record
+     *
+     * @param  array   $record - Filtered form params submitted
+     * @param  string  $pid - User p_id
+     * @return Array
+     */
     public function update($record, $pid) 
     {
         try {
@@ -158,11 +170,12 @@ class UserRepository implements RecordInterface
             ];
         }
     }
+
     /**
-     * Save the records based from the detail received from API
+     * Save a new User record
      *
-     * @param Array $records
-     * @return Boolean
+     * @param Array $records - Filtered form params submitted
+     * @return Array
      */
     public function save($record)
     {
@@ -223,6 +236,12 @@ class UserRepository implements RecordInterface
         }
     }
 
+    /**
+     * Get a new instance of User model
+     *
+     * @param  array   $record - Filtered form params submitted
+     * @return UserAccount
+     */
     private function getUserAccountObject($record)
     {
         $userAccount = new UserAccount;
@@ -233,6 +252,12 @@ class UserRepository implements RecordInterface
         return $userAccount;
     }
 
+    /**
+     * Get UserRole model instance
+     *
+     * @param  array   $record - Filtered form params submitted
+     * @return UserRole
+     */
     private function getUserRoleObject($record)
     {
         $userRole = new UserRole;
@@ -270,6 +295,13 @@ class UserRepository implements RecordInterface
         return $userRole;
     }
 
+    /**
+     * Check if email already exist
+     *
+     * @param  string  $email - The email to check
+     * @param  string  $pid - \User p_id
+     * @return Boolean
+     */
     public function isEmailExist($email, $pid = "")
     {
         if (!$email) {
@@ -292,54 +324,7 @@ class UserRepository implements RecordInterface
     }
 
     /**
-     * Get record by code
-     *
-     * @param String $code
-     * @return Collection
-     */
-    public function getDetailByCode($code) 
-    {
-        // try {
-        //     if (!$code) {
-        //         return null;
-        //     }
-
-        //     $playerModel = $this->getModel();
-        //     $player = $playerModel::find($code);
-           
-        //     return $player;
-
-        // } catch(\Exception $e) {
-        //     Log::error("An error has occured: " . $e->getMessage());
-        //     return null;
-        // }
-    }
-
-    /**
-     * Retrieve all player records
-     *
-     * @return Array[Collection]
-     */
-    public function getAll()
-    {
-        // try {
-        //     $playerModel = $this->getModel();
-        //     $players = $playerModel::with(['detail'])->get();
-        //     $records = [];
-                        
-        //     foreach ($players as $player) {
-        //         $records[] = $this->transformRecord($player);
-        //     }
-
-        //     return $records;
-        // } catch (\Exception $e) {
-        //     Log::error("An error has occured: " . $e->getMessage());
-        //     return null;
-        // }
-    }
-
-    /**
-     * Get player record by code
+     * Get User record by code
      *
      * @param String $code
      * @return Collection

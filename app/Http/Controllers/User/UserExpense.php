@@ -21,9 +21,9 @@ class UserExpense extends Controller
         $this->expenseCategoryModel = $expenseCategoryRepository;
     }
     /**
-     * Display a listing of the resource.
+     * Display a listing of the User Expense.
      *
-     * @return \Illuminate\Http\Response
+     * @return Json
      */
     public function index($user_id)
     {
@@ -32,9 +32,10 @@ class UserExpense extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new user expense.
      *
-     * @return \Illuminate\Http\Response
+     * @param  string $user_id - User p_id
+     * @return view
      */
     public function create($user_id)
     {
@@ -43,10 +44,11 @@ class UserExpense extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created user expense in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  string $user_id - User Expense p_id
+     * @return Json
      */
     public function store(Request $request, $user_id)
     {
@@ -59,21 +61,22 @@ class UserExpense extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified user expense.
      *
-     * @param  int  $id
+     * @param  string  $user_id - Auth user p_id
+     * @param  string  $id - User Expense p_id
      * @return \Illuminate\Http\Response
      */
     public function show($user_id, $id)
     {
-        dd("Inside userexpense show", "user_id is " . $user_id, "expense_id is " . $id);
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * Show the form for editing the specified user expense.
+     * 
+     * @param  string  $user_id - Auth user p_id
+     * @param  string  $id - User Expense p_id
+     * @return view
      */
     public function edit($user_id, $id)
     {
@@ -84,11 +87,12 @@ class UserExpense extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified user expense in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  string  $user_id - Auth user p_id
+     * @param  string  $id - User Expense p_id
+     * @return Json
      */
     public function update(Request $request, $user_id, $id)
     {
@@ -102,10 +106,11 @@ class UserExpense extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified user expense from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  string  $user_id - User p_id
+     * @param  string  $id - User expense p_id
+     * @return Json
      */
     public function destroy($user_id, $id)
     {

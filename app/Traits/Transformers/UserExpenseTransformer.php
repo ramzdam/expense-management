@@ -3,13 +3,21 @@
 namespace App\Traits\Transformers;
 
 /**
- * Trait PlayerTransformer
+ * Trait UserExpenseTransformer
  *
  * This Trait will be responsible for transforming collection record
  * into a Prettier format to be presented as response
  */
 trait UserExpenseTransformer
 {
+    /**
+     * Transform the Collection into a readable Array
+     *
+     * @param  Collection  $total_expense - Total User Expense
+     * @param  Collection  $expenses - User Expenses
+     * @param  Collection  $categories - Expense Categories
+     * @return Array
+     */
     public function toDetailRecord($total_expense, $expenses, $categories)
     {
         $output = [];
@@ -40,6 +48,13 @@ trait UserExpenseTransformer
         return array_values($output);
     }
 
+    /**
+     * Transform the Collection into a readable Array
+     *
+     * @param  Collection  $total_expense - Total User Expense computed
+     * @param  Collection  $categories - Expense Categories
+     * @return Array
+     */
     public function toChartRecord($total_expense, $categories)
     {
         $output = [];

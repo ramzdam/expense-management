@@ -3,16 +3,21 @@
 namespace App\Traits;
 
 use App\Repositories\ExpenseCategoryRepository;
-// use App\Player;
 
 /**
- * Trait PlayerTrait
+ * Trait ExpenseCategoryTrait
  *
  * This trait is responsible for handling all validation and conditions
  * that will be used as parameter to retrieve data in a repository
  */
 trait ExpenseCategoryTrait
 {
+    /**
+     * Get all Expense Category list
+     *
+     * @param  ExpenseCategoryRepository  $model - Expense Category Class instance
+     * @return Collection/Array
+     */
     public function getAll(ExpenseCategoryRepository $model) 
     {
         if (is_null($model)) {
@@ -23,6 +28,13 @@ trait ExpenseCategoryTrait
         return $result;
     }
 
+    /**
+     * Get Expense Category
+     *
+     * @param  ExpenseCategoryRepository  $model - Expense Category Class instance
+     * @param  string  $id - Expense Category p_id
+     * @return Array
+     */
     public function get(ExpenseCategoryRepository $model, $id) 
     {
         if (is_null($model)) {
@@ -48,8 +60,16 @@ trait ExpenseCategoryTrait
             'message' => "Record not found!",
             'data' => $result
         ];
-    }
     
+    }
+
+    /**
+     * Delete Expense Category
+     *
+     * @param  ExpenseCategoryRepository  $model - Expense Category Class instance
+     * @param  string  $pid - Expense Category p_id
+     * @return Array
+     */
     public function deleteRecord(ExpenseCategoryRepository $model, $pid)
     {
         if (is_null($model)) {
@@ -73,6 +93,14 @@ trait ExpenseCategoryTrait
         return $result;
     }
 
+    /**
+     * Update Expense Category
+     *
+     * @param  ExpenseCategoryRepository  $model - Expense Category Class instance
+     * @param  Array                      $record - Filtered form params submitted
+     * @param  string                     $pid - Expense Category p_id
+     * @return Array
+     */
     public function updateRecord(ExpenseCategoryRepository $model, $record, $pid)
     {
      
@@ -111,6 +139,13 @@ trait ExpenseCategoryTrait
         return $result;
     }
     
+    /**
+     * Save Expense Category
+     *
+     * @param  ExpenseCategoryRepository  $model - Expense Category Class instance
+     * @param  Array  $record - Filtered form params submitted
+     * @return Array
+     */
     public function save(ExpenseCategoryRepository $model, $record)
     {
         

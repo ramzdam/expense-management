@@ -4,16 +4,21 @@ namespace App\Traits;
 
 use App\Repositories\UserRepository;
 use App\Repositories\UserAccountRepository;
-// use App\Player;
 
 /**
- * Trait PlayerTrait
+ * Trait UserTrait
  *
  * This trait is responsible for handling all validation and conditions
  * that will be used as parameter to retrieve data in a repository
  */
 trait UserTrait
 {
+    /**
+     * Get all User record
+     *
+     * @param  UserRepository  $model - User Repository Class instance
+     * @return Collection/Array
+     */
     public function getAllUser(UserRepository $model) 
     {
         if (is_null($model)) {
@@ -24,6 +29,13 @@ trait UserTrait
         return $result;
     }
 
+    /**
+     * Get User record
+     *
+     * @param  UserRepository  $model - User Repository Class instance
+     * @param  string  $id - User p_id
+     * @return Array
+     */
     public function getUser(UserRepository $model, $id) 
     {
         if (is_null($model)) {
@@ -51,6 +63,13 @@ trait UserTrait
         ];
     }
     
+    /**
+     * Delete User record
+     *
+     * @param  UserRepository  $model - User Repository Class instance
+     * @param  string  $pid - User p_id
+     * @return Array
+     */
     public function deleteRecord(UserRepository $model, $pid)
     {
         if (is_null($model)) {
@@ -74,6 +93,14 @@ trait UserTrait
         return $result;
     }
 
+    /**
+     * Update User record
+     *
+     * @param  UserRepository  $model - User Repository Class instance
+     * @param  Array   $record - Filtered form params submitted
+     * @param  string  $pid - User p_id
+     * @return Array
+     */
     public function updateRecord(UserRepository $model, $record, $pid)
     {
      
@@ -156,6 +183,13 @@ trait UserTrait
         return $result;
     }
     
+    /**
+     * Save a User record
+     *
+     * @param  UserRepository  $model - User Repository Class instance
+     * @param  Array   $record - Filtered form params submitted
+     * @return Array
+     */
     public function save(UserRepository $model, $record)
     {
         
@@ -197,15 +231,6 @@ trait UserTrait
             'password' => $record->password,
             'account_type' => $type
         ];
-
-        // $user = User::create([
-        //     'p_id' => Str::uuid(),
-        //     'name' => $data['name'],
-        //     'last_name' => $data['last_name'],
-        //     'work' => $data['work'],
-        //     'email' => $data['email'],
-        //     'password' => Hash::make($data['password']),
-        // ]);
         
         $result = $model->save($user_record);
 

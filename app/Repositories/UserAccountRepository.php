@@ -18,9 +18,14 @@ class UserAccountRepository implements RecordInterface
 
     public function __construct(UserAccount $model)
     {
-        // $this->setModel($model);
     }
 
+    /**
+     * Delete the specified User Account from storage.
+     *
+     * @param  string  $pid - User Account p_id
+     * @return Array
+     */
     public function delete($pid)
     {
 
@@ -61,6 +66,13 @@ class UserAccountRepository implements RecordInterface
         }
     }
 
+    /**
+     * Update the specified user account from storage.
+     *
+     * @param  array   $record - Filtered form params submitted
+     * @param  string  $pid - User Account p_id
+     * @return Array
+     */
     public function update($record, $pid) 
     {
         try {
@@ -115,11 +127,12 @@ class UserAccountRepository implements RecordInterface
             ];
         }
     }
+
     /**
-     * Save the records based from the detail received from API
+     * Save specified records based from records
      *
-     * @param Array $records
-     * @return Boolean
+     * @param Array $records - Filtered form params submitted
+     * @return Array
      */
     public function save($record)
     {
@@ -179,6 +192,13 @@ class UserAccountRepository implements RecordInterface
         }
     }
 
+    /**
+     * Check if email exist
+     *
+     * @param  string  $email - The email to check
+     * @param  string  $pid - User Account p_id
+     * @return Boolean
+     */
     public function isEmailExist($email, $pid = "")
     {
         if (!$email) {
@@ -201,56 +221,9 @@ class UserAccountRepository implements RecordInterface
     }
 
     /**
-     * Get record by code
+     * Get user account record by code
      *
-     * @param String $code
-     * @return Collection
-     */
-    public function getDetailByCode($code) 
-    {
-        // try {
-        //     if (!$code) {
-        //         return null;
-        //     }
-
-        //     $playerModel = $this->getModel();
-        //     $player = $playerModel::find($code);
-           
-        //     return $player;
-
-        // } catch(\Exception $e) {
-        //     Log::error("An error has occured: " . $e->getMessage());
-        //     return null;
-        // }
-    }
-
-    /**
-     * Retrieve all player records
-     *
-     * @return Array[Collection]
-     */
-    public function getAll()
-    {
-        // try {
-        //     $playerModel = $this->getModel();
-        //     $players = $playerModel::with(['detail'])->get();
-        //     $records = [];
-                        
-        //     foreach ($players as $player) {
-        //         $records[] = $this->transformRecord($player);
-        //     }
-
-        //     return $records;
-        // } catch (\Exception $e) {
-        //     Log::error("An error has occured: " . $e->getMessage());
-        //     return null;
-        // }
-    }
-
-    /**
-     * Get player record by code
-     *
-     * @param String $code
+     * @param String $code - User Account p_id
      * @return Collection
      */
     public function get($code = "")
@@ -263,15 +236,5 @@ class UserAccountRepository implements RecordInterface
         $users = User::all();
 
         return $users;
-        // try {
-        //     $playerModel = $this->getModel();
-        //     $player = $playerModel::find($code);
-            
-        //     $record = $this->transformRecord($player);
-        //     return $record;
-        // } catch(\Exception $e) {
-        //     Log::error("An error has occured: " . $e->getMessage());
-        //     return null;
-        // }
     }
 }

@@ -20,15 +20,14 @@ class RoleRepository implements RecordInterface
 
     public function __construct(Role $model)
     {
-        // $this->setModel($model);
     }
     public function save($record) {}
     public function update($record, $pid){}
     public function delete($pid) {}
     /**
-     * Get player record by code
+     * Get Role record by code
      *
-     * @param String $code
+     * @param String $code - Role p_id
      * @return Collection
      */
     public function get($code = "")

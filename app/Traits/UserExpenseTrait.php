@@ -3,17 +3,21 @@
 namespace App\Traits;
 
 use App\Repositories\UserExpenseRepository;
-// use App\Repositories\UserAccountRepository;
-// use App\Player;
 
 /**
- * Trait PlayerTrait
+ * Trait UserExpenseTrait
  *
  * This trait is responsible for handling all validation and conditions
  * that will be used as parameter to retrieve data in a repository
  */
 trait UserExpenseTrait
 {
+    /**
+     * Get Expense Chart total expense
+     *
+     * @param  UserExpenseRepository  $model - User Expense Repository Class instance
+     * @return Array
+     */
     public function getExpenseChart(UserExpenseRepository $model)
     {
         if (is_null($model)) {
@@ -24,6 +28,13 @@ trait UserExpenseTrait
         return $result;
     }
 
+    /**
+     * Get all User Expense record by user p_id
+     *
+     * @param  UserExpenseRepository  $model - User Expense Repository Class instance
+     * @param  string  $pid - User p_id
+     * @return Array
+     */
     public function getAll(UserExpenseRepository $model, $pid) 
     {
         if (is_null($model)) {
@@ -38,16 +49,36 @@ trait UserExpenseTrait
         return $result;
     }
 
+    /**
+     * Get all User Expense
+     *
+     * @param  UserExpenseRepository  $model - User Expense Repository Class instance
+     * @return Collection
+     */
     public function getAllExpense(UserExpenseRepository $model)
     {
         return $model->get();
     }
 
+    /**
+     * Get Expense
+     *
+     * @param  UserExpenseRepository  $model - User Expense Repository Class instance
+     * @param  string  $expense_pid - Expense p_id
+     * @return Array
+     */
     public function getExpense(UserExpenseRepository $model, $expense_pid)
     {
         return $model->getExpense($expense_pid);
     }
 
+    /**
+     * Get User record
+     *
+     * @param  UserExpenseRepository  $model - User Expense Repository Class instance
+     * @param  string  $id - User p_id
+     * @return Array
+     */
     public function getUser(UserExpenseRepository $model, $id) 
     {
         if (is_null($model)) {
@@ -75,6 +106,14 @@ trait UserExpenseTrait
         ];
     }
     
+    /**
+     * Delete User Expense record
+     *
+     * @param  UserExpenseRepository  $model - User Expense Repository Class instance
+     * @param  string   $user_id - Auth user p_id
+     * @param  string  $pid - User p_id
+     * @return Array
+     */
     public function deleteRecord(UserExpenseRepository $model, $user_id, $pid)
     {
         if (is_null($model)) {
@@ -102,6 +141,15 @@ trait UserExpenseTrait
         return $result;
     }
 
+    /**
+     * Update User Expense record
+     *
+     * @param  UserExpenseRepository  $model - User Expense Repository Class instance
+     * @param  Array   $record - Filtered form params submitted
+     * @param  string  $user_id - Auth User p_id
+     * @param  string  $pid - User p_id
+     * @return Array
+     */
     public function updateRecord(UserExpenseRepository $model, $record, $user_id, $pid)
     {
      
@@ -152,6 +200,14 @@ trait UserExpenseTrait
         return $result;
     }
     
+    /**
+     * Save User Expense
+     *
+     * @param  UserExpenseRepository  $model - User Expense Repository Class instance
+     * @param  Array   $record - Filtered form params submitted
+     * @param  string  $user_pid - User p_id
+     * @return Array
+     */
     public function save(UserExpenseRepository $model, $record, $user_pid)
     {
         

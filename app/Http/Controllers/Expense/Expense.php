@@ -18,9 +18,9 @@ class Expense extends Controller
         $this->model = $userExpenseRepository;
     }
     /**
-     * Display a listing of the resource.
+     * Display a listing of the resource using HTML View
      *
-     * @return \Illuminate\Http\Response
+     * @return view
      */
     public function index()
     {
@@ -34,14 +34,13 @@ class Expense extends Controller
      */
     public function create($user_id)
     {
-        dd("Inside userexpense create", "user_id is " . $user_id);
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return Json
      */
     public function store(Request $request, $user_id)
     {
@@ -57,7 +56,6 @@ class Expense extends Controller
      */
     public function show($user_id, $id)
     {
-        dd("Inside userexpense show", "user_id is " . $user_id, "expense_id is " . $id);
     }
 
     /**
@@ -68,15 +66,15 @@ class Expense extends Controller
      */
     public function edit($user_id, $id)
     {
-        dd("Inside userexpense edit", "user_id is " . $user_id, 'expense_id is ' . $id);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  string  $id - Expense p_id
+     * @param  string  $user_id - Auth user p_id
+     * @return Json
      */
     public function update(Request $request, $user_id, $id)
     {
@@ -87,18 +85,13 @@ class Expense extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  string  $id - Expense p_id
+     * @param  string  $user_id - Auth user p_id
+     * @return Json
      */
     public function destroy($user_id, $id)
     {
         $response = $this->deleteRecord($this->model, $user_id, $id);
         return response()->json(['success' => $response['status'], 'message' => $response['message'], 'data' => $response['data']]);
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
 }

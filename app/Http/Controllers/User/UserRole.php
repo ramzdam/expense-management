@@ -14,7 +14,6 @@ class UserRole extends Controller
      */
     public function index()
     {
-        dd("Inside userrole index");
     }
 
     /**
@@ -24,7 +23,6 @@ class UserRole extends Controller
      */
     public function create()
     {
-        dd("Inside userrole create");
     }
 
     /**
@@ -35,7 +33,6 @@ class UserRole extends Controller
      */
     public function store(Request $request)
     {
-        dd("Inside userrole store");
     }
 
     /**
@@ -46,7 +43,6 @@ class UserRole extends Controller
      */
     public function show($id)
     {
-        dd("Inside userrole show");
     }
 
     /**
@@ -57,7 +53,6 @@ class UserRole extends Controller
      */
     public function edit($id)
     {
-        dd("Inside userrole edit");
     }
 
     /**
@@ -69,7 +64,6 @@ class UserRole extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd("Inside userrole update");
     }
 
     /**
@@ -80,6 +74,5 @@ class UserRole extends Controller
      */
     public function destroy($id)
     {
-        dd("Inside userrole destroy");
     }
 }
