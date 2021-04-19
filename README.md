@@ -2,7 +2,7 @@
 This is just a simple implementation of an Expense Management System. Although it's better to use Vue but due to lack of time I opt to use the conventional Blade syntax and JQuery
 
 ## Note
-There are more improvements needed for this application. But for simplicity I just opt to go with the simplest approach. One of the improvements would be 1.
+There are more improvements needed for this application. But for simplicity I just opt to go with the simplest approach. One of the improvements would be.
 
 1. Using REDIS CACHE/MEMCACHE.
 2. Implementing Policy instead of GATE for cleaner approach
